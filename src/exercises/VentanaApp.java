@@ -12,6 +12,7 @@ import javax.swing.DefaultListModel;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.BoxLayout;
 
 public class VentanaApp extends JFrame {
 
@@ -32,34 +33,47 @@ public class VentanaApp extends JFrame {
 		menuBar.add(menu);
 		
 		JMenuItem menuItemAgregarPelicula = new JMenuItem("Agregar");
-				
+		
+		menu.add(menuItemAgregarPelicula);	
+		
 		menuItemAgregarPelicula.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				JOptionPane.showMessageDialog(null, "AGREGAR PELICULA");
+				
+				contentPane.removeAll();
+
+				AgregarPeliculas panel = new AgregarPeliculas();
+				panel.setDefaultListModel(listModel);
+				
+				contentPane.add(panel); 								
+				contentPane.repaint();
+				contentPane.revalidate();
 			
 			}
 		});
-		menu.add(menuItemAgregarPelicula);
-		
-		
 		
 		JMenuItem menuItemListarPeliculas = new JMenuItem("Listar");
 		menu.add(menuItemListarPeliculas);
 		
 		menuItemListarPeliculas.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				JOptionPane.showMessageDialog(null, "LISTAR PELICULAS");
+				
+				contentPane.removeAll();
+
+				ListarPeliculas panel = new ListarPeliculas();
+				panel.setDefaultListModel(listModel);
+				
+				contentPane.add(panel); 								
+				contentPane.repaint();
+				contentPane.revalidate();
 		
 			}
 		});
 		menu.add(menuItemListarPeliculas);
 		
-		
-		
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
-		contentPane.setLayout(null);
-	
+		contentPane.setLayout(new BoxLayout(contentPane, BoxLayout.X_AXIS));
+
 	}
 }

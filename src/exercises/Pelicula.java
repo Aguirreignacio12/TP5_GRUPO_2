@@ -1,13 +1,12 @@
 package exercises;
 
 public class Pelicula {
-	private int _id;
+	private static int _id = 0;
 	private String _nombre;
 	private Genero _genero;
 	
 	
 	public Pelicula(int id, String nombre, Genero genero) {
-		this._id = id;
 		this._nombre = nombre;
 		this._genero = genero;
 	}
@@ -15,11 +14,6 @@ public class Pelicula {
 
 	public int get_id() {
 		return _id;
-	}
-
-
-	public void set_id(int _id) {
-		this._id = _id;
 	}
 
 
@@ -40,6 +34,11 @@ public class Pelicula {
 
 	public void set_genero(Genero _genero) {
 		this._genero = _genero;
+	}
+	
+	public static int DevuelveProximoID()
+	{
+		return _id + 1;
 	}
 
 
