@@ -1,5 +1,7 @@
 package exercises;
 
+import java.util.Objects;
+
 public class Pelicula {
     private static int _idGlobal = 0; 
     private int _id; 
@@ -22,7 +24,10 @@ public class Pelicula {
         return _nombre;
     }
 
-    public void set_nombre(String _nombre) {
+  
+
+
+	public void set_nombre(String _nombre) {
         this._nombre = _nombre;
     }
 
@@ -42,6 +47,6 @@ public class Pelicula {
 
     @Override
     public String toString() {
-        return "Pelicula: " + _nombre + ", genero: " + _genero;
+        return "Pelicula: " + _nombre + "-->" + "genero: " + _genero;
     }
 }

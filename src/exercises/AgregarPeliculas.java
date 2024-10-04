@@ -2,6 +2,7 @@ package exercises;
 
 import javax.swing.JPanel;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import javax.swing.JTextField;
@@ -9,6 +10,8 @@ import javax.swing.JComboBox;
 import java.awt.GridBagLayout;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 
 public class AgregarPeliculas extends JPanel {
@@ -65,22 +68,61 @@ public class AgregarPeliculas extends JPanel {
 		gbc_lblGenero.gridy = 4;
 		add(lblGenero, gbc_lblGenero);
 		
-		JComboBox<Genero> cbGenero = new JComboBox<>();
+		JComboBox<Genero> cbGenero = new JComboBox<Genero>();
 		GridBagConstraints gbc_cbGenero = new GridBagConstraints();
 		gbc_cbGenero.insets = new Insets(0, 0, 5, 5);
 		gbc_cbGenero.fill = GridBagConstraints.HORIZONTAL;
 		gbc_cbGenero.gridx = 3;
 		gbc_cbGenero.gridy = 4;
 		add(cbGenero, gbc_cbGenero);
-		cbGenero.addItem(new Genero("Seleccione un g�nero"));
+		cbGenero.addItem(new Genero("Seleccione un g�nero"));
 		cbGenero.addItem(new Genero("Terror"));
-		cbGenero.addItem(new Genero("Acci�n"));
+		cbGenero.addItem(new Genero("Acci�n"));
 		cbGenero.addItem(new Genero("Suspenso"));
-		cbGenero.addItem(new Genero("Rom�ntica"));
-
+		cbGenero.addItem(new Genero("Rom�ntica"));
+		
 		
 		
 		JButton btnAceptar = new JButton("Aceptar");	
+		btnAceptar.addActionListener(new ActionListener() {
+		public void actionPerformed(ActionEvent e) {
+
+			   
+
+            String nombre = txtNombre.getText();
+
+            Genero generoSeleccionado = (Genero) cbGenero.getSelectedItem();
+
+
+
+            if (nombre.isEmpty()) {
+
+                JOptionPane.showMessageDialog(null, "Debe ingresar el nombre de la película.", "Error", JOptionPane.ERROR_MESSAGE);
+
+            } else if (generoSeleccionado == null || generoSeleccionado.getNombre().equals("Seleccione un género")) {
+
+                JOptionPane.showMessageDialog(null, "Debe seleccionar un género válido.", "Error", JOptionPane.ERROR_MESSAGE);
+
+            } else {
+
+                Pelicula nuevaPelicula = new Pelicula(nombre, generoSeleccionado);                                      
+
+                listModel.addElement(nuevaPelicula);  // Agrega la película a la lista			               
+
+                JOptionPane.showMessageDialog(null, "Película agregada exitosamente.", "Información", JOptionPane.INFORMATION_MESSAGE);
+
+                            lblID.setText(Integer.toString(Pelicula.DevuelveProximoID()));
+
+                txtNombre.setText(""); // Limpia el campo de nombre
+
+                cbGenero.setSelectedIndex(0); // Resetea el ComboBox
+            }
+
+                
+
+		}});
+
+
 		GridBagConstraints gbc_btnAceptar = new GridBagConstraints();
 		gbc_btnAceptar.fill = GridBagConstraints.HORIZONTAL;
 		gbc_btnAceptar.gridwidth = 2;
@@ -88,6 +130,9 @@ public class AgregarPeliculas extends JPanel {
 		gbc_btnAceptar.gridx = 1;
 		gbc_btnAceptar.gridy = 6;
 		add(btnAceptar, gbc_btnAceptar);
+		
+		
+		
 	}
 
 	public void setDefaultListModel(DefaultListModel<Pelicula> listModel) {
@@ -95,6 +140,7 @@ public class AgregarPeliculas extends JPanel {
 		this.listModel = listModel;
 		
  }
+	
 
 
 

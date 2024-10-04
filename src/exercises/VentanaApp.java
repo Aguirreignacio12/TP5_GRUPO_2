@@ -23,7 +23,7 @@ public class VentanaApp extends JFrame {
 	
 	public VentanaApp() {
 		
-		listModel = new DefaultListModel<>();
+		listModel = new DefaultListModel<Pelicula>();
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
