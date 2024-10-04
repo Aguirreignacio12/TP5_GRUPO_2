@@ -99,7 +99,7 @@ public class AgregarPeliculas extends JPanel {
 
                 JOptionPane.showMessageDialog(null, "Debe ingresar el nombre de la película.", "Error", JOptionPane.ERROR_MESSAGE);
 
-            } else if (generoSeleccionado == null || generoSeleccionado.getNombre().equals("Seleccione un género")) {
+            } else if (generoSeleccionado == null || cbGenero.getSelectedIndex() == 0) {
 
                 JOptionPane.showMessageDialog(null, "Debe seleccionar un género válido.", "Error", JOptionPane.ERROR_MESSAGE);
 
