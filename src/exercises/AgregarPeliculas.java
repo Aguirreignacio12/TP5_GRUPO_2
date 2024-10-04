@@ -1,7 +1,6 @@
 package exercises;
 
 import javax.swing.JPanel;
-import net.miginfocom.swing.MigLayout;
 import javax.swing.JLabel;
 import javax.swing.DefaultListModel;
 import javax.swing.JButton;
@@ -11,15 +10,15 @@ import java.awt.GridBagLayout;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
 
+
 public class AgregarPeliculas extends JPanel {
 	
 	private static final long serialVersionUID = 3908678547193996636L;
 	private DefaultListModel<Pelicula> listModel;
 	private JTextField txtNombre;
 
-	/**
-	 * Create the panel.
-	 */
+
+
 	public AgregarPeliculas() {
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[]{60, 37, 0, 0, 106, 0, 0};
@@ -66,15 +65,22 @@ public class AgregarPeliculas extends JPanel {
 		gbc_lblGenero.gridy = 4;
 		add(lblGenero, gbc_lblGenero);
 		
-		JComboBox cbGenero = new JComboBox();
+		JComboBox<Genero> cbGenero = new JComboBox<>();
 		GridBagConstraints gbc_cbGenero = new GridBagConstraints();
 		gbc_cbGenero.insets = new Insets(0, 0, 5, 5);
 		gbc_cbGenero.fill = GridBagConstraints.HORIZONTAL;
 		gbc_cbGenero.gridx = 3;
 		gbc_cbGenero.gridy = 4;
 		add(cbGenero, gbc_cbGenero);
+		cbGenero.addItem(new Genero("Seleccione un género"));
+		cbGenero.addItem(new Genero("Terror"));
+		cbGenero.addItem(new Genero("Acción"));
+		cbGenero.addItem(new Genero("Suspenso"));
+		cbGenero.addItem(new Genero("Romántica"));
+
 		
-		JButton btnAceptar = new JButton("Aceptar");
+		
+		JButton btnAceptar = new JButton("Aceptar");	
 		GridBagConstraints gbc_btnAceptar = new GridBagConstraints();
 		gbc_btnAceptar.fill = GridBagConstraints.HORIZONTAL;
 		gbc_btnAceptar.gridwidth = 2;
@@ -88,6 +94,8 @@ public class AgregarPeliculas extends JPanel {
 		
 		this.listModel = listModel;
 		
-	}
+ }
+
+
 
 }

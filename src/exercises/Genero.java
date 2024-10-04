@@ -1,20 +1,12 @@
 package exercises;
 
 public class Genero {
-	private int _id;
 	private String _nombre;
 	
-	public Genero(int id, String nombre) {
-		this._id= id;
+	public Genero(String nombre) {
 		this._nombre = nombre;
 	};
 	
-	public int getId() {
-		return _id;
-	}
-	public void setId(int id) {
-		this._id = id;
-	}
 	public String getNombre() {
 		return _nombre;
 	}
@@ -23,7 +15,7 @@ public class Genero {
 	}
 	@Override
 	public String toString() {
-		return "Genero: " + _nombre;
+		return _nombre;
 	}
 
 }
